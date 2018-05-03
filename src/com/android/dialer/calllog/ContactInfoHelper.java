@@ -305,7 +305,7 @@ public class ContactInfoHelper {
             }
         }
         if (info != null && info != ContactInfo.EMPTY) {
-            if (!isConfUrlLog && TextUtils.isEmpty(postDialString)) {
+            if (!isConfUrlLog && !TextUtils.isEmpty(postDialString)) {
                 number += postDialString;
             }
             info.formattedNumber = formatPhoneNumber(number, null, countryIso);
