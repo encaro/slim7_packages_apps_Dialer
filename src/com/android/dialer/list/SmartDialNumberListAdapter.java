@@ -41,13 +41,11 @@ public class SmartDialNumberListAdapter extends DialerPhoneNumberListAdapter {
     private static final String TAG = SmartDialNumberListAdapter.class.getSimpleName();
     private static final boolean DEBUG = false;
 
-    private final Context mContext;
-
     private SmartDialNameMatcher mNameMatcher;
 
     public SmartDialNumberListAdapter(Context context) {
         super(context);
-        mContext = context;
+        mNameMatcher = new SmartDialNameMatcher("", SmartDialPrefix.getMap());
         setShortcutEnabled(SmartDialNumberListAdapter.SHORTCUT_DIRECT_CALL, false);
 
         if (DEBUG) {
@@ -62,8 +60,6 @@ public class SmartDialNumberListAdapter extends DialerPhoneNumberListAdapter {
         if (DEBUG) {
             Log.v(TAG, "Configure Loader with query" + getQueryString());
         }
-
-        mNameMatcher = new SmartDialNameMatcher("", SmartDialPrefix.getMap());
 
         if (getQueryString() == null) {
             loader.configureQuery("");
